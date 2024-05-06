@@ -1,0 +1,1 @@
+# swisscom-terraform-assignment
