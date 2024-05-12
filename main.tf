@@ -66,3 +66,11 @@ resource "aws_iam_policy" "dynamodb_policy" {
 }
 EOF
 }
+
+########## ATTACH POLICY to STEP-FUNCTION ROLE ##########
+
+resource "aws_iam_policy_attachment" "policy-attach" {
+  name       = "policy-attachment"
+  policy_arn = aws_iam_policy.dynamodb_policy.arn
+  roles      = [aws_iam_role.step-function_role.name]
+}
