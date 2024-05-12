@@ -1,0 +1,19 @@
+{
+    "Comment": "A description of my state machine",
+    "StartAt": "DynamoDB PutItem",
+    "States": {
+      "DynamoDB PutItem": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::dynamodb:putItem",
+        "Parameters": {
+          "TableName": "FilesNew",
+          "Item": {
+            "FileName": {
+              "S": "README.md"
+            }
+          }
+        },
+        "End": true
+      }
+    }
+  }

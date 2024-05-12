@@ -41,3 +41,6 @@ resource "aws_iam_role" "step-function_role" {
     ]
   })
 }
+
+########## CREATE STEP-FUNCTION ##########
+
