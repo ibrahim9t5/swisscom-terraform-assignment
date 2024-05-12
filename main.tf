@@ -42,5 +42,27 @@ resource "aws_iam_role" "step-function_role" {
   })
 }
 
-########## CREATE STEP-FUNCTION ##########
+########## DYNAMODB POLICY for STEP-FUNCTION ##########
 
+resource "aws_iam_policy" "dynamodb_policy" {
+  name        = "dynamodb-policy"
+  description = "DynamoDB policy"
+
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:PutItem"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:*:*:table/Files"
+      ]
+    }
+  ]
+}
+EOF
+}
