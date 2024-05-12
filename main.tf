@@ -133,4 +133,22 @@ resource "aws_lambda_function" "my_lambda" {
   runtime = "python3.8"
 }
 
-########################################################################################
+########## CREATE LAMBDA POLICY to EXE STEP-FUNCTION ##########
+
+resource "aws_iam_role_policy" "step_function_policy" {
+  name   = "StepFunctionPolicy"
+  role   = aws_iam_role.iam_for_lambda.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Effect   = "Allow",
+        Action   = [
+          "states:StartExecution"
+        ],
+        Resource = "*"
+      }
+    ]
+  })
+}
