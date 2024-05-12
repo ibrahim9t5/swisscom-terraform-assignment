@@ -72,4 +72,7 @@ aws --endpoint-url http://localhost:4566 dynamodb scan --table-name Files
 
 ##########################
 
-NOTE: to restart docker in case of any error during docker up run: docker-compose restart
+### NOTE: 
+1) to restart docker in case of any error during docker up run: docker-compose restart
+2) Make DEBUG = 1 to enable terraform debugging
+3) Run export TF_LOG=DEBUG to enable debug logging
