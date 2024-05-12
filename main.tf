@@ -74,3 +74,32 @@ resource "aws_iam_policy_attachment" "policy-attach" {
   policy_arn = aws_iam_policy.dynamodb_policy.arn
   roles      = [aws_iam_role.step-function_role.name]
 }
+
+########## CREATE STEP-FUNCTION with ROLE ##########
+
+resource "aws_sfn_state_machine" "stepfunction_state_machine" {
+  name     = "stepfuntion-state-machine"
+  role_arn = aws_iam_role.step-function_role.arn
+
+  definition = <<EOF
+{
+  "Comment": "A description of my stepfuntion state machine",
+  "StartAt": "DynamoDB PutItem",
+  "States": {
+    "DynamoDB PutItem": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::dynamodb:putItem",
+      "Parameters": {
+        "TableName": "Files",
+        "Item": {
+          "FileName": {
+            "S": "README.md"
+          }
+        }
+      },
+      "End": true
+    }
+  }
+}
+EOF
+}
