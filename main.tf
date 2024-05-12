@@ -21,3 +21,23 @@ resource "aws_dynamodb_table" "files_table" {
     type = "S"
   }
 }
+
+########## CREATE ROLE for STEP-FUNCTION ##########
+
+resource "aws_iam_role" "step-function_role" {
+  name = "step-function_role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "states.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
