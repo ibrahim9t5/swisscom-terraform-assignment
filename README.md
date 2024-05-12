@@ -15,7 +15,8 @@ Pre-Requisite
 2) Docker
 3) Docker Compose
 4) AWS CLI
-5) Terraform 5.48/5.49
+5) Terraform 1.8.3
+6) Terraform Provider 5.48/5.49
 
 ##############################
 
