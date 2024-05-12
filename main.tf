@@ -103,3 +103,6 @@ resource "aws_sfn_state_machine" "stepfunction_state_machine" {
 }
 EOF
 }
+
+########## CREATE LAMBDA FUNCTION ##########
+
